@@ -7,16 +7,23 @@ A local studio to **browse, resume, and switch models** on your [Claude Code](ht
 ## Run it
 
 ```bash
-npx agentsessions
+npx @paragchirde/agentsessions
 ```
 
 That's it — it starts a local server and opens your browser. Requires **Node ≥ 18.18**. (Ollama is optional — if it's running, its models are auto-detected.)
 
+Prefer a short command? Install once, then run `agentsessions`:
+
+```bash
+npm install -g @paragchirde/agentsessions
+agentsessions
+```
+
 Options:
 
 ```bash
-npx agentsessions --port 4317   # choose a port (default 4317)
-npx agentsessions --no-open     # don't auto-open the browser
+agentsessions --port 4317   # choose a port (default 4317)
+agentsessions --no-open     # don't auto-open the browser
 ```
 
 ## What it does

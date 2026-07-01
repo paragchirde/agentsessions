@@ -1,5 +1,5 @@
 {
-  "name": "agentsessions",
+  "name": "@paragchirde/agentsessions",
   "version": "0.1.0",
   "description": "A local studio to browse, resume, and switch models on your Claude Code sessions — with usage analytics and one-command launch.",
   "keywords": [
@@ -19,6 +19,9 @@
     "url": "git+https://github.com/paragchirde/agentsessions.git"
   },
   "homepage": "https://github.com/paragchirde/agentsessions#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "agentsessions": "bin/cli.js"
   },
