@@ -16,9 +16,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paragchirde/claude-code-studio.git"
+    "url": "git+https://github.com/paragchirde/agentsessions.git"
   },
-  "homepage": "https://github.com/paragchirde/claude-code-studio#readme",
+  "homepage": "https://github.com/paragchirde/agentsessions#readme",
   "bin": {
     "agentsessions": "bin/cli.js"
   },
