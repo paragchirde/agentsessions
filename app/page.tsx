@@ -60,7 +60,10 @@ export default async function Home() {
         <div className="mx-auto flex max-w-[1200px] flex-col gap-2 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2 text-on-dark">
             <SpikeMark size={16} className="text-on-dark" />
-            <span className="font-display text-[16px]">Claude Code Studio</span>
+            <span className="font-display text-[16px]">
+              AgentSessions{" "}
+              <span className="text-on-dark-soft">· for Claude Code</span>
+            </span>
           </div>
           <p className="text-[13px] text-on-dark-soft">
             Reads <code className="font-mono">~/.claude/projects</code> · nothing

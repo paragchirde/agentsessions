@@ -1,0 +1,15 @@
+# Its presence stops npm from falling back to .gitignore (which excludes
+# .next). The package.json "files" allowlist controls what actually ships;
+# these rules just trim source/dev files from the published tarball.
+app/
+lib/
+scripts/
+public/
+next.config.ts
+tsconfig.json
+postcss.config.mjs
+eslint.config.mjs
+next-env.d.ts
+.nvmrc
+AGENTS.md
+CLAUDE.md

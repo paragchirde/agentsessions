@@ -20,7 +20,7 @@ export function SiteNav({
           <Link href="/" className="flex items-center gap-2 text-ink">
             <SpikeMark size={20} className="text-ink" />
             <span className="font-display text-[19px] leading-none text-ink">
-              Claude Code Studio
+              AgentSessions
             </span>
           </Link>
           <div className="hidden items-center gap-1 sm:flex">

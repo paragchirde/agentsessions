@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Claude Code Studio",
+  title: "AgentSessions — for Claude Code",
   description: "Browse and resume Claude Code sessions across all your projects",
 };
 

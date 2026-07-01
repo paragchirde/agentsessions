@@ -1,41 +1,45 @@
-# Claude Code Studio
+# AgentSessions
 
-A local UI to browse and resume your Claude Code sessions across **all** projects.
+A local studio to **browse, resume, and switch models** on your [Claude Code](https://claude.com/claude-code) sessions — with usage analytics and one-command launch. Runs entirely on your machine; nothing leaves it.
 
-Claude Code already persists every session to `~/.claude/projects/<project>/<session-id>.jsonl`,
-and `claude --resume` can reopen them — but only for the folder you're currently in. Once you
-close a terminal it's hard to remember which project a conversation lived in. This gives you one
-searchable, cross-project view of every session, with a one-click command to resume each one.
-
-## What it does (MVP)
-
-- Reads `~/.claude/projects/` and parses every session file
-- Groups sessions by project, most-recently-active first
-- Shows each session's AI title, latest prompt, message count, git branch, and age
-- Full-text search across titles, prompts, project paths, and branches
-- **Copy resume cmd** → `cd "<project>" && claude --resume <session-id>`
+> Claude Code already saves every session to `~/.claude/projects/`, but once you close the terminal it's hard to find which project a conversation lived in. AgentSessions gives you one searchable, cross-project view — and lets you continue any session on a different model (Anthropic, Ollama, or your own backend).
 
 ## Run it
 
-Requires Node ≥ 18.18 (the repo pins Node 22 via `.nvmrc`).
+```bash
+npx agentsessions
+```
+
+That's it — it starts a local server and opens your browser. Requires **Node ≥ 18.18**. (Ollama is optional — if it's running, its models are auto-detected.)
+
+Options:
 
 ```bash
-nvm use            # or: nvm use 22
-npm install
-npm run dev        # http://localhost:3000
+npx agentsessions --port 4317   # choose a port (default 4317)
+npx agentsessions --no-open     # don't auto-open the browser
 ```
+
+## What it does
+
+- **Sessions** — every Claude Code session across all projects, searchable, grouped by project. Each card shows the model, live context size, and a one-click command to **continue on any model** (with a context-fit guard) or fork.
+- **Launch** — auto-discovers your model backends (native Claude, Ollama local/cloud, or custom env-based like LiteLLM/OpenRouter). Compose a new-session command with a project, model, permission mode, and first prompt. Add and tune your own model profiles.
+- **Analytics** — token volume by model, tool-call counts, tokens by project, and a 30-day activity timeline.
+
+Light and dark themes included.
 
 ## How it works
 
-- `lib/sessions.ts` — the parser. Walks the projects dir, reads each JSONL file,
-  and extracts session metadata (real `cwd`, `ai-title`, first/last human prompt
-  with IDE/command noise stripped, timestamps, branch).
-- `app/api/sessions/route.ts` — serves the parsed groups as JSON.
-- `app/page.tsx` + `app/session-browser.tsx` — server-rendered list with a
-  client-side search/copy layer.
+AgentSessions reads the JSONL session logs Claude Code writes to `~/.claude/projects/` and, for launching, generates copyable shell commands — it never executes anything or handles your credentials. Custom model profiles are stored locally in your browser.
 
-## Deliberately not built yet
+## Develop
 
-- Auto-starting a daemon on session start — unnecessary; the data is just files on disk.
-- Launching `claude --resume` directly from the UI (needs an embedded terminal) —
-  copying the command covers the need for now.
+```bash
+nvm use            # Node 22 (see .nvmrc)
+npm install
+npm run dev        # http://localhost:3000
+npm run package    # production build + standalone bundle (what gets published)
+```
+
+## License
+
+MIT © Parag Chirde

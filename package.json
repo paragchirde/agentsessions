@@ -1,12 +1,39 @@
 {
-  "name": "claude-code-studio",
+  "name": "agentsessions",
   "version": "0.1.0",
-  "private": true,
+  "description": "A local studio to browse, resume, and switch models on your Claude Code sessions — with usage analytics and one-command launch.",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "ai",
+    "agent",
+    "sessions",
+    "ollama",
+    "cli",
+    "developer-tools"
+  ],
+  "author": "Parag Chirde <parag.chirde@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paragchirde/claude-code-studio.git"
+  },
+  "homepage": "https://github.com/paragchirde/claude-code-studio#readme",
+  "bin": {
+    "agentsessions": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    ".next/standalone/",
+    "!.next/standalone/**/*.map"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "package": "next build && node scripts/postbuild.mjs",
+    "prepublishOnly": "npm run package"
   },
   "dependencies": {
     "next": "16.2.9",
