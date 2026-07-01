@@ -1,0 +1,26 @@
+name: Publish to npm
+
+# Publishes to npm whenever you push a version tag, e.g.:
+#   npm version patch && git push --follow-tags
+# Requires an NPM_TOKEN repo secret (npm automation token) under
+# Settings → Secrets and variables → Actions.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci
+      # `npm publish` runs prepublishOnly → build + standalone bundle first.
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
